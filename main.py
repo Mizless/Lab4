@@ -114,7 +114,7 @@ try:
             AF[i][j] = s
     time_prev = time_next
     time_next = time.time()
-    print_matrix(AF, "(K*A)*F", time_next - time_prev)
+    print_matrix(AF, "(K*A) * F", time_next - time_prev)
 
     for i in range(row_q):  # AT
         for j in range(i, row_q, 1):
