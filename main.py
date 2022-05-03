@@ -48,14 +48,6 @@ try:
     for i in range(row_q):  # заполняем матрицу А
         for j in range(row_q):
             A[i][j] = random.randint(-10 , 10)
-            # if i < j and j < row_q - 1 - i:
-            #     A[i][j] = 1
-            # elif i < j and j > row_q - 1 - i:
-            #     A[i][j] = 2
-            # elif i > j and j > row_q - 1 - i:
-            #     A[i][j] = 3
-            # elif i > j and j < row_q - 1 - i:
-            #     A[i][j] = 4
 
     time_prev = time_next
     time_next = time.time()
