@@ -8,6 +8,7 @@ B,C,D,E заполняется случайным образом целыми ч
 матричные операции последовательно."""
 
 
+
 import random
 import time
 
@@ -76,11 +77,8 @@ try:
     for i in range(size):  # обрабатываем подматрицу С
         for j in range(i + 1, size, 1):
             if j % 2 == 0 and j < size - 1 - i and IsPrime(C[i][j]):
-                print(i, j)
-                print(C[i][j])
                 q_prime += 1
             if i % 2 == 1 and C[i][j] == 0 and j > size - 1 - i:
-                print(i, j)
                 q_zero += 1
 
     print("Количество простых чисел в нечетных столбцах в области 2: ", q_prime, "Количество нулевых  элементов в четных строках в области 3: ", q_zero)
