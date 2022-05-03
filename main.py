@@ -11,10 +11,13 @@ B,C,D,E заполняется случайным образом целыми ч
 import random
 import time
 
-def IsPrime(n):
-    d = 2
-    while d * d <= n and n % d != 0:
-        d += 1
+def IsPrime(k):
+    if k==2 or k==3: return True
+    if k%2==0 or k<2: return False
+    for i in range(3, int(k**0.5)+1, 2):
+        if k%i==0:
+            return False
+
     return True
 
 def print_matrix(M, matr_name, tt):
@@ -45,6 +48,14 @@ try:
     for i in range(row_q):  # заполняем матрицу А
         for j in range(row_q):
             A[i][j] = random.randint(-10 , 10)
+            # if i < j and j < row_q - 1 - i:
+            #     A[i][j] = 1
+            # elif i < j and j > row_q - 1 - i:
+            #     A[i][j] = 2
+            # elif i > j and j > row_q - 1 - i:
+            #     A[i][j] = 3
+            # elif i > j and j < row_q - 1 - i:
+            #     A[i][j] = 4
 
     time_prev = time_next
     time_next = time.time()
@@ -72,9 +83,12 @@ try:
     q_zero = 0
     for i in range(size):  # обрабатываем подматрицу С
         for j in range(i + 1, size, 1):
-            if j % 2 == 1 and j > size - 1 - i and IsPrime(C[i][j]):
+            if j % 2 == 0 and j < size - 1 - i and IsPrime(C[i][j]):
+                print(i, j)
+                print(C[i][j])
                 q_prime += 1
-            elif j % 2 == 0 and C[i][j] == 0 and j < size - 1 - i:
+            if i % 2 == 1 and C[i][j] == 0 and j > size - 1 - i:
+                print(i, j)
                 q_zero += 1
 
     print("Количество простых чисел в нечетных столбцах в области 2: ", q_prime, "Количество нулевых  элементов в четных строках в области 3: ", q_zero)
